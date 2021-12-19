@@ -3,20 +3,30 @@
 //render
 //loop
 
-GameRoot.main = (function(){
-    let gameState = {};
+GameRoot.main = (() => {
+    let myRectangle = {
+        position: {x: 100, y: 50},
+        fill: 'blue',
+        stroke: 'black',
+        width: 200,
+        height: 100,
+    }
 
-    function porcessInput(){
+    function processInput(){
 
     }
-    function updateGameState(){}
+    function updateGameState(){
+        myRectangle.position.x += 5;
+    }
     
     function render(){
-        console.log('rendering')
+        GameRoot.graphics.clear()
+        const {position, fill, stroke, width, height} = myRectangle
+        GameRoot.graphics.drawRectangle(position, width, height, stroke, fill)
     }
 
     function gameLoop(){
-        porcessInput()
+        processInput()
         updateGameState()
         render()
         requestAnimationFrame(gameLoop)
